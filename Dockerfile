@@ -11,6 +11,7 @@ RUN apt-get update && \
     usermod -a -G docker jenkins
 RUN curl -sSL https://sdk.cloud.google.com > /tmp/gcl && \
     bash /tmp/gcl --install-dir=/usr/local/gcloud --disable-prompts
+RUN chown jenkins /usr/local/gcloud -R
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 USER jenkins
 RUN java -jar /usr/share/jenkins/jenkins.war --version && \
